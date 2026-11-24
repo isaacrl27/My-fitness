@@ -1,0 +1,594 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+/* Sincroniza todas las utilidades `dark:*` de Tailwind v4 con el selector de
+   tema de la app (`data-tema="oscuro"` en <html>), en vez de depender de la
+   preferencia bruta del sistema cuando el usuario fuerza Claro u Oscuro. */
+@custom-variant dark (&:where([data-tema="oscuro"], [data-tema="oscuro"] *));
+
+/* Niveles complementarios de la escala tipográfica para micro-etiquetas (2xs)
+   y titulares/cifras grandes (2xl–4xl), de modo que crezcan en armonía con el
+   ajuste de «Tamaño de letra» igual que el resto de tokens de theme.css. */
+@theme {
+  --color-surface-raised: #ebf0ed;
+  --text-3xs: 10px;
+  --text-3xs--line-height: 14px;
+  --text-3xs--font-weight: 500;
+  --text-2xs: 11px;
+  --text-2xs--line-height: 15px;
+  --text-2xs--font-weight: 500;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 30px;
+  --text-3xl: 30px;
+  --text-3xl--line-height: 36px;
+  --text-4xl: 36px;
+  --text-4xl--line-height: 42px;
+}
+
+/* Base de la app: fondo, texto y foco visible en todo.
+   El fondo y color-scheme van en <html> y <body> para que al deslizar con
+   rebote elástico (overscroll arriba y abajo en móviles) no se asome el
+   lienzo blanco del navegador cuando el tema está en oscuro. */
+html {
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  color-scheme: light;
+}
+
+/* Escala de tamaño de letra de la app: redefine las variables de diseño de
+   Tailwind para que todos los textos (.text-2xs, .text-sm, .text-2xl, etc.)
+   crezcan de verdad al instante, además de escalar el font-size de la raíz. */
+html[data-tamano="pequeno"] {
+  font-size: 88%;
+  --text-3xs: 9px;
+  --text-3xs--line-height: 13px;
+  --text-2xs: 10px;
+  --text-2xs--line-height: 14px;
+  --text-xs: 11px;
+  --text-xs--line-height: 15px;
+  --text-sm: 12.5px;
+  --text-sm--line-height: 17px;
+  --text-base: 14px;
+  --text-base--line-height: 21px;
+  --text-lg: 17.5px;
+  --text-lg--line-height: 24px;
+  --text-xl: 24px;
+  --text-xl--line-height: 29px;
+  --text-2xl: 25px;
+  --text-2xl--line-height: 30px;
+  --text-3xl: 26px;
+  --text-3xl--line-height: 32px;
+  --text-4xl: 32px;
+  --text-4xl--line-height: 37px;
+  --text-display: 34px;
+  --text-display--line-height: 38px;
+}
+
+html[data-tamano="normal"] {
+  font-size: 100%;
+}
+
+html[data-tamano="grande"] {
+  font-size: 120%;
+  --text-3xs: 11.5px;
+  --text-3xs--line-height: 15.5px;
+  --text-2xs: 13px;
+  --text-2xs--line-height: 17px;
+  --text-xs: 14px;
+  --text-xs--line-height: 19px;
+  --text-sm: 16.5px;
+  --text-sm--line-height: 23px;
+  --text-base: 19px;
+  --text-base--line-height: 28px;
+  --text-lg: 24px;
+  --text-lg--line-height: 33px;
+  --text-xl: 33px;
+  --text-xl--line-height: 40px;
+  --text-2xl: 35px;
+  --text-2xl--line-height: 42px;
+  --text-3xl: 36px;
+  --text-3xl--line-height: 42px;
+  --text-4xl: 43px;
+  --text-4xl--line-height: 49px;
+  --text-display: 47px;
+  --text-display--line-height: 52px;
+}
+
+html[data-tamano="gigante"] {
+  font-size: 140%;
+  --text-3xs: 13px;
+  --text-3xs--line-height: 17px;
+  --text-2xs: 14.5px;
+  --text-2xs--line-height: 19px;
+  --text-xs: 16px;
+  --text-xs--line-height: 22px;
+  --text-sm: 19px;
+  --text-sm--line-height: 27px;
+  --text-base: 22px;
+  --text-base--line-height: 32px;
+  --text-lg: 28px;
+  --text-lg--line-height: 38px;
+  --text-xl: 38px;
+  --text-xl--line-height: 46px;
+  --text-2xl: 40px;
+  --text-2xl--line-height: 48px;
+  --text-3xl: 41px;
+  --text-3xl--line-height: 48px;
+  --text-4xl: 49px;
+  --text-4xl--line-height: 55px;
+  --text-display: 54px;
+  --text-display--line-height: 60px;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html[data-tema="oscuro"] {
+  color-scheme: dark;
+  --color-surface-raised: #212c26;
+  background-color: #0f1512 !important;
+}
+
+html[data-tema="oscuro"] body {
+  background-color: #0f1512 !important;
+}
+
+html[data-tema="claro"] {
+  color-scheme: light;
+  background-color: #ffffff !important;
+}
+
+html[data-tema="claro"] body {
+  background-color: #ffffff !important;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* La entrada de la cortina de carga: el logo aparece con un pelín de escala y
+   el texto de debajo entra después. El arco y la salida los lleva el propio
+   componente. */
+@keyframes carga-entra-logo {
+  from { opacity: 0; transform: scale(.9); }
+}
+
+@keyframes carga-texto {
+  from { opacity: 0; transform: translateY(4px); }
+}
+
+.carga-logo { animation: carga-entra-logo .42s cubic-bezier(.2,.8,.2,1) both; }
+.carga-texto { animation: carga-texto .26s cubic-bezier(.2,.8,.2,1) both; }
+
+/* Entrada de cada pantalla al cambiar de pestaña: se asoma subiendo un pelín
+   mientras se aclara. En (app)/layout se envuelve el contenido con la clase
+   enruta. from-solo: anima de ese estado al natural.
+
+   El desplazamiento es corto a propósito: con 7 px y 260 ms el contenido daba
+   un bote que mareaba al volver a una pestaña ya visitada. Con 4 px y 140 ms
+   se nota que hay cambio de pantalla sin que la página parezca saltar. */
+@keyframes entra-ruta {
+  0% { opacity: 0; transform: translateY(3px) scale(0.996); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.enruta { animation: entra-ruta 0.22s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Pulso elástico del check de hábitos estilo Duolingo */
+@keyframes check-rebote-duo {
+  0% { transform: scale(1); }
+  35% { transform: scale(0.86); }
+  65% { transform: scale(1.14); }
+  85% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+.check-duolingo {
+  animation: check-rebote-duo 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* La etiqueta «+5 pts» que sube y se desvanece al ganar puntos: 8 px en
+   600 ms, lo justo para verse sin quedarse flotando sobre la barra. */
+@keyframes sube-puntos {
+  0% { opacity: 0; transform: translateY(3px) scale(.9); }
+  20% { opacity: 1; transform: translateY(0) scale(1); }
+  60% { opacity: 1; transform: translateY(-4px) scale(1); }
+  100% { opacity: 0; transform: translateY(-8px) scale(1); }
+}
+
+.sube-puntos { animation: sube-puntos .6s cubic-bezier(.2,.8,.2,1) both; }
+
+/* El check de un ejercicio al tacharlo: un pulso corto, no un rebote. */
+@keyframes pulso-check {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.pulso-check { animation: pulso-check .15s ease-out; }
+
+/* El pulso elástico de un botón que acaba de sumar algo (hábito, agua). */
+@keyframes pulso-suave {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.pulso { animation: pulso-suave .28s cubic-bezier(.34,1.56,.64,1); }
+
+/* La hoja de anotar comida: sube como una hoja del iPhone y sale bajando.
+   La de salida se queda montada hasta el final del animación
+   (onAnimationEnd en hoja-anadir.tsx la desmonta). */
+@keyframes entra-hoja {
+  from { transform: translateY(100%); }
+}
+
+@keyframes sale-hoja {
+  to { transform: translateY(105%); }
+}
+
+.hoja-entra { animation: entra-hoja .34s cubic-bezier(.2,.9,.2,1) both; }
+.hoja-sale { animation: sale-hoja .3s cubic-bezier(.4,0,.7,1) both; }
+
+/* Racha estilo Duolingo: llama viva con resplandor y oscilación cálida */
+@keyframes racha-fuego {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.18) rotate(-5deg);
+    filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.6));
+  }
+  40% {
+    transform: scale(1.06) rotate(4deg);
+  }
+  65% {
+    transform: scale(1.16) rotate(-3deg);
+    filter: drop-shadow(0 0 7px rgba(245, 158, 11, 0.75));
+  }
+  85% {
+    transform: scale(1.02) rotate(2deg);
+  }
+}
+
+.animate-racha-fuego {
+  animation: racha-fuego 2.4s infinite ease-in-out;
+  transform-origin: 50% 90%;
+}
+
+/* Modal Racha Duolingo: Entrada elástica de fuego, destellos y chispas */
+@keyframes duolingo-fuego-pop {
+  0% {
+    transform: scale(0.1) rotate(-15deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.32) rotate(6deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.92) rotate(-3deg);
+  }
+  85% {
+    transform: scale(1.08) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-fuego-pop {
+  animation: duolingo-fuego-pop 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  transform-origin: 50% 85%;
+}
+
+/* Ignición teatral de la llama Duolingo */
+@keyframes duolingo-ignicion {
+  0% {
+    transform: scale(0.6) rotate(-8deg);
+    filter: brightness(0.6) drop-shadow(0 0 0px transparent);
+  }
+  40% {
+    transform: scale(1.45) rotate(8deg);
+    filter: brightness(1.4) drop-shadow(0 0 25px rgba(245, 158, 11, 0.95));
+  }
+  65% {
+    transform: scale(0.9) rotate(-4deg);
+  }
+  82% {
+    transform: scale(1.12) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: brightness(1) drop-shadow(0 0 16px rgba(245, 158, 11, 0.8));
+  }
+}
+
+.animate-duolingo-ignicion {
+  animation: duolingo-ignicion 0.95s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  transform-origin: 50% 85%;
+}
+
+@keyframes onda-expansion {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.animate-onda-expansion {
+  animation: onda-expansion 0.8s ease-out forwards;
+}
+
+/* Splash de agua al añadir un vaso */
+@keyframes gota-splash {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-24px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+.animate-gota-splash {
+  animation: gota-splash 0.6s ease-out forwards;
+}
+
+@keyframes resplandor-fuego {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate(-50%, 0) scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(-50%, 0) scale(1.15);
+  }
+}
+
+.animate-resplandor-fuego {
+  animation: resplandor-fuego 2.2s infinite ease-in-out;
+}
+
+@keyframes chispa-flotar {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) translateX(var(--desplazamiento, 10px)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.animate-chispa {
+  animation: chispa-flotar 1.8s infinite ease-out;
+}
+
+/* Animación ultra-suave para barras de progreso y gráficas */
+.barra-suave {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.45s cubic-bezier(0.16, 1, 0.3, 1), height 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: bottom;
+}
+
+/* En modo oscuro el icono nativo de calendario de <input type="date"> se veía casi negro */
+[data-tema="oscuro"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.88);
+}
+
+/* Animación de microinteracciones: Emojis flotantes (Rare UI / Reacciones) */
+@keyframes reaccion-flotar {
+  0% {
+    transform: translate(-50%, -50%) scale(0.35) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    transform: translate(calc(-50% + var(--dx, 0px) * 0.25), calc(-50% - 30px)) scale(var(--escala, 1.15)) rotate(calc(var(--rot, 0deg) * 0.3));
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% - 210px)) scale(calc(var(--escala, 1) * 0.75)) rotate(var(--rot, 0deg));
+    opacity: 0;
+  }
+}
+
+.anim-reaccion-flotar {
+  animation-name: reaccion-flotar;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: forwards;
+}
+
+/* Animaciones de dirección para el contador numérico rodante (Rare UI) */
+@keyframes digito-sale-arriba {
+  0% { transform: translateY(0%); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+@keyframes digito-entra-abajo {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0%); opacity: 1; }
+}
+@keyframes digito-sale-abajo {
+  0% { transform: translateY(0%); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+@keyframes digito-entra-arriba {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0%); opacity: 1; }
+}
+
+/* Animación de vaivén para la campana de notificaciones (Rare UI / iOS) */
+@keyframes campana-vaiven {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(16deg); }
+  30% { transform: rotate(-14deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-6deg); }
+  75% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.anim-campana {
+  transform-origin: top center;
+  animation: campana-vaiven 0.75s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+/* Animacion de vibracion elastica para inputs OTP erroneos (Rare UI) */
+@keyframes otp-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.anim-otp-shake {
+  animation: otp-shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Animación de oscilación armónica amortiguada para el cordón elástico de la lámpara (Vídeo 4: Pull-Cord) */
+@keyframes muelle-cordon {
+  0% { transform: translateY(36px); }
+  22% { transform: translateY(-14px); }
+  44% { transform: translateY(8px); }
+  66% { transform: translateY(-4px); }
+  85% { transform: translateY(1.5px); }
+  100% { transform: translateY(0); }
+}
+
+.anim-muelle-cordon {
+  animation: muelle-cordon 0.65s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* Animaciones de Notificaciones (Vídeo 6: Gooey Drop y Merge Counter) */
+@keyframes gooey-drop {
+  0% {
+    transform: translate3d(0, -64px, 0) scaleY(1.35) scaleX(0.72);
+    opacity: 0;
+  }
+  55% {
+    transform: translate3d(0, 6px, 0) scaleY(0.92) scaleX(1.08);
+    opacity: 1;
+  }
+  75% {
+    transform: translate3d(0, -3px, 0) scaleY(1.04) scaleX(0.97);
+  }
+  90% {
+    transform: translate3d(0, 1px, 0) scaleY(0.99) scaleX(1.01);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes merge-pop {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(1.42);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-jiggle {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.06) translateY(2px); }
+  50% { transform: scale(0.97) translateY(-1px); }
+  75% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.anim-gooey-drop {
+  animation: gooey-drop 0.55s cubic-bezier(0.25, 1, 0.5, 1) both;
+  will-change: transform, opacity;
+}
+
+.anim-merge-pop {
+  animation: merge-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.anim-toast-jiggle {
+  animation: toast-jiggle 0.45s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* Aceleración por hardware para el rotor del ventilador de techo (Vídeo 4) */
+.anim-giro-ventilador {
+  will-change: transform;
+}
+
+/* Animaciones de apertura para modales y desplegables */
+@keyframes tw-enter {
+  from {
+    opacity: var(--tw-enter-opacity, 1);
+    transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0)
+      scale(var(--tw-enter-scale, 1));
+  }
+}
+
+@keyframes fade-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.animate-in {
+  animation: tw-enter var(--tw-duration, 200ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fade-in { --tw-enter-opacity: 0; }
+.fade-in-50 { --tw-enter-opacity: 0.5; }
+.zoom-in-75 { --tw-enter-scale: 0.75; }
+.zoom-in-95 { --tw-enter-scale: 0.95; }
+.slide-in-from-top { --tw-enter-translate-y: -16px; }
+.slide-in-from-bottom { --tw-enter-translate-y: 24px; }
+.slide-in-from-bottom-6 { --tw-enter-translate-y: 1.5rem; }
+
+.animate-fade-in {
+  --tw-enter-opacity: 0;
+  animation: tw-enter 0.2s ease-out both;
+}
+
+.animate-scale-in {
+  animation: fade-scale-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Respeta a quien pide menos movimiento en el móvil excepto el ventilador explícito */
+@media (prefers-reduced-motion: reduce) {
+  *:not(.anim-giro-ventilador),
+  *:not(.anim-giro-ventilador)::before,
+  *:not(.anim-giro-ventilador)::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "my-fitness",
+  "version": "0.1.35",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "npm run prueba",
+    "prueba": "node pruebas/calculos.prueba.mts && node pruebas/nube.prueba.mts && node pruebas/sesion.prueba.mts && node pruebas/config-nube.prueba.mts && node pruebas/novedades.prueba.mts && node pruebas/avisos.prueba.mts && node pruebas/avisos-cliente.prueba.mts && node pruebas/puntos.prueba.mts && node pruebas/habitos.prueba.mts && node pruebas/off.prueba.mts && node pruebas/ia-tope.prueba.mts && node pruebas/comentarios.prueba.mts && node pruebas/freno.prueba.mts && node pruebas/nombre.prueba.mts && node pruebas/agua.prueba.mts && node pruebas/telegram.prueba.mts && node pruebas/pasos.prueba.mts && node pruebas/tema.prueba.mts && node pruebas/recetas.prueba.mts && node pruebas/compra.prueba.mts && node pruebas/racion.prueba.mts && node pruebas/combinaciones.prueba.mts && node pruebas/ejercicios.prueba.mts && node pruebas/tienda.prueba.mts && node pruebas/editar.prueba.mts && node pruebas/privacidad.prueba.mts && node pruebas/tamano.prueba.mts && node pruebas/telegram-parser.prueba.mts && node pruebas/social.prueba.mts && node pruebas/ciclo.prueba.mts && node pruebas/alimentos.prueba.mts && node pruebas/sueno.prueba.mts && node pruebas/racha.prueba.mts && node pruebas/feedback-ia.prueba.mts && node pruebas/navegacion.prueba.mts && node pruebas/diseno.prueba.mts && node pruebas/movil-pwa.prueba.mts && node pruebas/ia-barras-telegram.prueba.mts && node pruebas/fase8-social-compra.prueba.mts && node pruebas/fase9-plan-recetas-ejercicios.prueba.mts && node pruebas/fase10-rendimiento-offline.prueba.mts && node pruebas/reacciones.prueba.mts && node pruebas/contador.prueba.mts && node pruebas/mapa-calor.prueba.mts && node pruebas/campana.prueba.mts && node pruebas/carpeta-interactiva.prueba.mts && node pruebas/boton-elastico.prueba.mts && node pruebas/input-otp.prueba.mts && node pruebas/fila-deslizable.prueba.mts && node pruebas/cordon-luz.prueba.mts && node pruebas/tostada.prueba.mts && node pruebas/push-back.prueba.mts && node pruebas/arrastre-hoja.prueba.mts && node pruebas/esqueleto.prueba.mts && node pruebas/cola-fotos-offline.prueba.mts && node pruebas/atajos-comida.prueba.mts && node pruebas/fase11-gran-ensayo-final.prueba.mts",
+    "prueba:e2e": "playwright test",
+    "auditar:seguridad": "node scripts/auditar-seguridad.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
+    "@capgo/capacitor-health": "^8.11.12",
+    "@supabase/supabase-js": "^2.118.0",
+    "@zxing/browser": "^0.2.1",
+    "lucide-react": "^1.59.0",
+    "motion": "^14.10.1",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.3",
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/web-push": "^3.6.4",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

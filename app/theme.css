@@ -1,0 +1,83 @@
+/* GENERADO por replica/design/gen_tokens.py — no editar a mano.
+   La fuente de verdad es replica/design/tokens.json. */
+@theme {
+  --color-bg: #ffffff;
+  --color-surface: #f4f7f5;
+  --color-border: #e1e6e3;
+  --color-border-input: #78837e;
+  --color-ink: #101614;
+  --color-muted: #58635e;
+  --color-accent: #1c7a58;
+  --color-accent-soft: #e6f3ee;
+  --color-on-accent: #ffffff;
+  --color-danger: #b3261e;
+  --color-success: #1c7a4d;
+  --color-warning: #8a5a00;
+  --color-track: #7d8d83;
+
+  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-xs--font-weight: 500;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-sm--font-weight: 400;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-base--font-weight: 400;
+  --text-lg: 20px;
+  --text-lg--line-height: 28px;
+  --text-lg--font-weight: 600;
+  --text-xl: 28px;
+  --text-xl--line-height: 34px;
+  --text-xl--font-weight: 700;
+  --text-display: 40px;
+  --text-display--line-height: 44px;
+  --text-display--font-weight: 700;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 1px 2px rgba(16,24,40,.06), 0 1px 3px rgba(16,24,40,.10);
+  --shadow-pop: 0 12px 32px rgba(16,24,40,.16);
+
+  --ease-app: cubic-bezier(.2,.8,.2,1);
+}
+
+[data-tema="claro"] {
+  color-scheme: light;
+  --color-bg: #ffffff;
+  --color-surface: #f4f7f5;
+  --color-border: #e1e6e3;
+  --color-border-input: #78837e;
+  --color-ink: #101614;
+  --color-muted: #58635e;
+  --color-accent: #1c7a58;
+  --color-accent-soft: #e6f3ee;
+  --color-on-accent: #ffffff;
+  --color-danger: #b3261e;
+  --color-success: #1c7a4d;
+  --color-warning: #8a5a00;
+  --color-track: #7d8d83;
+}
+
+[data-tema="oscuro"] {
+  color-scheme: dark;
+  --color-bg: #0f1512;
+  --color-surface: #182019;
+  --color-border: #2b3630;
+  --color-border-input: #7e9187;
+  --color-ink: #e9f0ec;
+  --color-muted: #a6b5ad;
+  --color-accent: #5fd3a6;
+  --color-accent-soft: #17342a;
+  --color-on-accent: #0a1a13;
+  --color-danger: #ff9a90;
+  --color-success: #7fe0b0;
+  --color-warning: #e7c27a;
+  --color-track: #5f7066;
+}
